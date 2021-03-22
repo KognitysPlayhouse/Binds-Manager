@@ -40,6 +40,7 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
@@ -58,7 +59,7 @@
 			// saveButton
 			// 
 			this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.saveButton.Location = new System.Drawing.Point(703, 341);
+			this.saveButton.Location = new System.Drawing.Point(407, 373);
 			this.saveButton.Name = "saveButton";
 			this.saveButton.Size = new System.Drawing.Size(167, 81);
 			this.saveButton.TabIndex = 1;
@@ -70,7 +71,7 @@
 			// addNewBindButton
 			// 
 			this.addNewBindButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addNewBindButton.Location = new System.Drawing.Point(727, 171);
+			this.addNewBindButton.Location = new System.Drawing.Point(686, 161);
 			this.addNewBindButton.Name = "addNewBindButton";
 			this.addNewBindButton.Size = new System.Drawing.Size(143, 29);
 			this.addNewBindButton.TabIndex = 2;
@@ -81,7 +82,7 @@
 			// clearButton
 			// 
 			this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.clearButton.Location = new System.Drawing.Point(431, 373);
+			this.clearButton.Location = new System.Drawing.Point(431, 326);
 			this.clearButton.Name = "clearButton";
 			this.clearButton.Size = new System.Drawing.Size(113, 41);
 			this.clearButton.TabIndex = 3;
@@ -94,32 +95,34 @@
 			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.richTextBox1.Location = new System.Drawing.Point(12, 12);
 			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(583, 263);
+			this.richTextBox1.Size = new System.Drawing.Size(583, 308);
 			this.richTextBox1.TabIndex = 4;
 			this.richTextBox1.Text = "";
 			// 
 			// commandTextBox
 			// 
 			this.commandTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.commandTextBox.Location = new System.Drawing.Point(727, 129);
+			this.commandTextBox.Location = new System.Drawing.Point(686, 129);
 			this.commandTextBox.Name = "commandTextBox";
-			this.commandTextBox.Size = new System.Drawing.Size(143, 26);
+			this.commandTextBox.Size = new System.Drawing.Size(184, 26);
 			this.commandTextBox.TabIndex = 6;
+			this.commandTextBox.Text = "Command Here";
 			// 
 			// comboBox1
 			// 
 			this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(727, 95);
+			this.comboBox1.Location = new System.Drawing.Point(686, 95);
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(143, 28);
 			this.comboBox1.TabIndex = 7;
+			this.comboBox1.Text = "Select key";
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(659, 98);
+			this.label1.Location = new System.Drawing.Point(618, 98);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(35, 20);
 			this.label1.TabIndex = 8;
@@ -129,7 +132,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(639, 129);
+			this.label2.Location = new System.Drawing.Point(598, 132);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(82, 20);
 			this.label2.TabIndex = 9;
@@ -159,11 +162,22 @@
 			this.pictureBox1.TabStop = false;
 			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(871, 133);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(72, 17);
+			this.checkBox1.TabIndex = 12;
+			this.checkBox1.Text = "Is Admin?";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(949, 487);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.pictureBox2);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label2);
@@ -199,6 +213,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.CheckBox checkBox1;
 	}
 }
 

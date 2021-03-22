@@ -21,6 +21,18 @@ namespace BindsManager
 
 		private void Main_Load(object sender, EventArgs e)
 		{
+			ToolTip keyToolTip = new ToolTip();
+			keyToolTip.ShowAlways = true;
+			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to");
+
+			ToolTip commandTip = new ToolTip();
+			commandTip.ShowAlways = true;
+			commandTip.SetToolTip(commandTextBox, "Type the command you want to bind. Eg kill");
+
+			ToolTip isAdminTip = new ToolTip();
+			isAdminTip.ShowAlways = true;
+			isAdminTip.SetToolTip(checkBox1, "If the command is an Admin command check this box");
+
 			richTextBox1.Text = File.ReadAllText(path);
 
 			richTextBox1.SelectionStart = richTextBox1.Text.Length;
@@ -44,7 +56,15 @@ namespace BindsManager
 
 		private void addNewBindButton_Click(object sender, EventArgs e)
 		{
-			richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:.{commandTextBox.Text}\n";
+			switch (checkBox1.Checked)
+			{
+				case true:
+					richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:/{commandTextBox.Text}\n";
+					break;
+				case false:
+					richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:.{commandTextBox.Text}\n";
+					break;
+			}
 		}
 
 		private void pictureBox1_Click(object sender, EventArgs e)

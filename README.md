@@ -1,4 +1,2 @@
 # Binds Manager
- Manage your SCP:SL Binds in an easy way!
-
-WIP!!
+ A simple C# App that allows you to manage your in-game binds easily!
