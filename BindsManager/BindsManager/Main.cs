@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -83,6 +84,23 @@ namespace BindsManager
 			{
 				outputFile.Write(richTextBox1.Text);
 				MessageBox.Show("Saved!", "All good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
+
+		private void richTextBox1_TextChanged(object sender, EventArgs e)
+		{
+			richTextBox2.Text = "";
+			foreach(var line in richTextBox1.Text.Split('\n'))
+			{
+				try
+				{
+					richTextBox2.Text += line.Replace(line.Split(':')[0], UnityKeyCodes.Keycodes.Where(x => x.Value.ToString() == line.Split(':')[0]).FirstOrDefault().Key) + Environment.NewLine;
+
+				}
+				catch
+				{
+
+				}
 			}
 		}
 	}
