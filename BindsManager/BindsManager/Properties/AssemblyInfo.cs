@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BindsManager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Binds Manager")]
+[assembly: AssemblyDescription("Binds Manager")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Kognity's Playhouse")]
 [assembly: AssemblyProduct("BindsManager")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("86cb3ede-6474-40a9-9bd1-93fa6baedab1")]
+[assembly: Guid("6E7AE2B1-CB96-4B1C-9317-B72B6B4E3D97")]
 
 // Version information for an assembly consists of the following four values:
 //
