@@ -11,7 +11,7 @@ namespace BindsManager
 	public partial class Main : Form
 	{
 		public string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory", "cmdbinding.txt");
-        public string import_folder_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BindsManager");
+        public string import_folder_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BindsManager");
 
         public Main()
 		{
@@ -27,10 +27,6 @@ namespace BindsManager
 			ToolTip commandTip = new ToolTip();
 			commandTip.ShowAlways = true;
 			commandTip.SetToolTip(commandTextBox, "Type the command you want to bind, e.g. kill.");
-
-			ToolTip isAdminTip = new ToolTip();
-			isAdminTip.ShowAlways = true;
-			isAdminTip.SetToolTip(checkBox1, "If the command is an Admin command, check this box!");
 
 			richTextBox1.Text = File.ReadAllText(path);
 
@@ -57,14 +53,17 @@ namespace BindsManager
 
 		private void addNewBindButton_Click(object sender, EventArgs e)
 		{
-			switch (checkBox1.Checked)
+			if (radioButton1.Checked) // its a . command
 			{
-				case true:
-					richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:/{commandTextBox.Text}\n";
-					break;
-				case false:
-					richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:.{commandTextBox.Text}\n";
-					break;
+				richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:.{commandTextBox.Text}\n";
+			}
+			else if (radioButton2.Checked) // it is an admin command
+			{
+				richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:/{commandTextBox.Text}\n";
+			}
+			else if (radioButton3.Checked) // it is a game console command
+			{
+				richTextBox1.Text += $"{UnityKeyCodes.Keycodes.Where(x => x.Key == comboBox1.Text).FirstOrDefault().Value}:{commandTextBox.Text}\n";
 			}
 		}
 
@@ -178,5 +177,10 @@ namespace BindsManager
         {
             Process.Start(@import_folder_path);
         }
-    }
+
+		private void helpbutton_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("There are 3 major types of commands in SCP:SL\n\nFirstly are Remote Admin Commands. They are used either in the text based RA or typed in the game console with a / prefix (\"/tut Kognity\" as an example).\n\nSecondly are Client Commands. They are typed exlusively in the game console and are prefixed with a . (\".ability1\" as an example)\n\nLastly are Game Console Commands. They are locally run commands and are not sent to the server and have no prefix (\"ar\", \"rc\", \"connect SOMEIPADDRESS\" are some notable examples)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+	}
 }
