@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static BindsManager.Classes.InputBox;
 
 namespace BindsManager
 {
 	public partial class Main : Form
 	{
 		public string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory", "cmdbinding.txt");
-		public Main()
+        public string import_folder_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BindsManager");
+
+        public Main()
 		{
 			InitializeComponent();
 		}
@@ -24,15 +22,15 @@ namespace BindsManager
 		{
 			ToolTip keyToolTip = new ToolTip();
 			keyToolTip.ShowAlways = true;
-			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to");
+			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to.");
 
 			ToolTip commandTip = new ToolTip();
 			commandTip.ShowAlways = true;
-			commandTip.SetToolTip(commandTextBox, "Type the command you want to bind. Eg kill");
+			commandTip.SetToolTip(commandTextBox, "Type the command you want to bind, e.g. kill.");
 
 			ToolTip isAdminTip = new ToolTip();
 			isAdminTip.ShowAlways = true;
-			isAdminTip.SetToolTip(checkBox1, "If the command is an Admin command check this box");
+			isAdminTip.SetToolTip(checkBox1, "If the command is an Admin command, check this box!");
 
 			richTextBox1.Text = File.ReadAllText(path);
 
@@ -43,6 +41,8 @@ namespace BindsManager
 			{
 				comboBox1.Items.Add(key);
 			}
+
+            Directory.CreateDirectory(import_folder_path); // Create (internally ignores if already exists.)
 		}
 
 		private void clearButton_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace BindsManager
 
 		private void autoFillButton_Click(object sender, EventArgs e)
 		{
-			richTextBox1.Text = richTextBox1.Text + "49:.ability1\n50:.ability2\n51:.ability3\n52:.ability4\n102:.zfe\n";
+			richTextBox1.Text += "49:.ability1\n50:.ability2\n51:.ability3\n52:.ability4\n102:.zfe\n";
 		}
 
 		private void addNewBindButton_Click(object sender, EventArgs e)
@@ -83,11 +83,82 @@ namespace BindsManager
 			using (StreamWriter outputFile = new StreamWriter(path))
 			{
 				outputFile.Write(richTextBox1.Text);
-				MessageBox.Show("Saved!", "All good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("Saved your binds!", "All good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 
-		private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void importButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.InitialDirectory = import_folder_path;
+                dialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                dialog.FilterIndex = 2;
+                dialog.RestoreDirectory = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var path = dialog.FileName;
+                    var file = dialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(path))
+                    {
+                        richTextBox1.Text = reader.ReadToEnd();
+                        MessageBox.Show("Remember to press the Save button!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            /*
+             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
+            {
+                dialog.SelectedPath = import_folder_path;
+                
+                if (dialog.ShowDialog() == DialogResult.OK) {
+                    var result = AskInput("What is the name of this bind?", "Kognity's Bind Manager");
+
+                    var path = Path.Combine(import_folder_path, $"{result}.txt");
+
+                    var file = File.Create(path);
+
+                    using (StreamWriter writer = new StreamWriter(file))
+                    {
+                        writer.Write(richTextBox1.Text);
+                        MessageBox.Show($"The file was successfully exported as {result}!", "Exported file!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            
+            */
+
+            // Readme!
+            //
+            // Use code above instead if want it to be possible to choose folder (delete code below if enable code above) | Tested, works perfectly but seems like an extra unnecessary struggle for the user..
+            //
+            
+            var result = AskInput("What do you want to name this bind preset?", "Bind Manager");
+
+            if (result == "")
+            {
+                MessageBox.Show("You must specify a preset name!", "Bind Manager Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var path = Path.Combine(import_folder_path, $"{result}.txt");
+
+            var file = File.Create(path);
+
+            using (StreamWriter writer = new StreamWriter(file))
+            {
+                writer.Write(richTextBox1.Text);
+                MessageBox.Show($"The preset was successfully saved under name '{result}'!", "Saved preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
 		{
 			richTextBox2.Text = "";
 			foreach(var line in richTextBox1.Text.Split('\n'))
@@ -95,13 +166,17 @@ namespace BindsManager
 				try
 				{
 					richTextBox2.Text += line.Replace(line.Split(':')[0], UnityKeyCodes.Keycodes.Where(x => x.Value.ToString() == line.Split(':')[0]).FirstOrDefault().Key) + Environment.NewLine;
-
 				}
 				catch
 				{
-
+                    return;
 				}
 			}
 		}
-	}
+
+        private void openButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(@import_folder_path);
+        }
+    }
 }
