@@ -22,15 +22,15 @@ namespace BindsManager
 		{
 			ToolTip keyToolTip = new ToolTip();
 			keyToolTip.ShowAlways = true;
-			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to");
+			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to.");
 
 			ToolTip commandTip = new ToolTip();
 			commandTip.ShowAlways = true;
-			commandTip.SetToolTip(commandTextBox, "Type the command you want to bind. Eg kill");
+			commandTip.SetToolTip(commandTextBox, "Type the command you want to bind, e.g. kill.");
 
 			ToolTip isAdminTip = new ToolTip();
 			isAdminTip.ShowAlways = true;
-			isAdminTip.SetToolTip(checkBox1, "If the command is an Admin command check this box");
+			isAdminTip.SetToolTip(checkBox1, "If the command is an Admin command, check this box!");
 
 			richTextBox1.Text = File.ReadAllText(path);
 
@@ -104,7 +104,7 @@ namespace BindsManager
                     using (StreamReader reader = new StreamReader(path))
                     {
                         richTextBox1.Text = reader.ReadToEnd();
-                        MessageBox.Show("Imported file!", "Remember to press the Save button!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Remember to press the Save button!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

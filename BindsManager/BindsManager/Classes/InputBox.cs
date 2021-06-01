@@ -48,7 +48,8 @@ namespace BindsManager.Classes
                 DialogResult = DialogResult.OK,
             };
 
-            ok.Click += (sender, e) => { inputBox.Close();  };
+            
+            ok.Click += (sender, e) => { inputBox.Close();  }; // There's no need to make a method for just 1 line.
 
             inputBox.Controls.Add(text);
             inputBox.Controls.Add(input);
