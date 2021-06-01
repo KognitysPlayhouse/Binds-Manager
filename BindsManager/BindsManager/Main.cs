@@ -11,7 +11,7 @@ namespace BindsManager
 	public partial class Main : Form
 	{
 		public string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory", "cmdbinding.txt");
-        public string import_folder_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BindsManager");
+        public string import_folder_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BindsManager");
 
         public Main()
 		{
