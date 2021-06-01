@@ -95,7 +95,6 @@ namespace BindsManager
 				try
 				{
 					richTextBox2.Text += line.Replace(line.Split(':')[0], UnityKeyCodes.Keycodes.Where(x => x.Value.ToString() == line.Split(':')[0]).FirstOrDefault().Key) + Environment.NewLine;
-
 				}
 				catch
 				{
