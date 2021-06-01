@@ -47,6 +47,7 @@
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
+			this.helpbutton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
@@ -215,6 +216,7 @@
 			// radioButton1
 			// 
 			this.radioButton1.AutoSize = true;
+			this.radioButton1.Checked = true;
 			this.radioButton1.Location = new System.Drawing.Point(849, 371);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(106, 17);
@@ -226,30 +228,39 @@
 			// radioButton2
 			// 
 			this.radioButton2.AutoSize = true;
-			this.radioButton2.Location = new System.Drawing.Point(849, 417);
+			this.radioButton2.Location = new System.Drawing.Point(849, 392);
 			this.radioButton2.Name = "radioButton2";
-			this.radioButton2.Size = new System.Drawing.Size(103, 17);
+			this.radioButton2.Size = new System.Drawing.Size(104, 17);
 			this.radioButton2.TabIndex = 18;
-			this.radioButton2.TabStop = true;
-			this.radioButton2.Text = "Game Command";
+			this.radioButton2.Text = "Admin Command";
 			this.radioButton2.UseVisualStyleBackColor = true;
 			// 
 			// radioButton3
 			// 
 			this.radioButton3.AutoSize = true;
-			this.radioButton3.Location = new System.Drawing.Point(849, 394);
+			this.radioButton3.Location = new System.Drawing.Point(849, 414);
 			this.radioButton3.Name = "radioButton3";
-			this.radioButton3.Size = new System.Drawing.Size(104, 17);
+			this.radioButton3.Size = new System.Drawing.Size(103, 17);
 			this.radioButton3.TabIndex = 19;
-			this.radioButton3.TabStop = true;
-			this.radioButton3.Text = "Admin Command";
+			this.radioButton3.Text = "Game Command";
 			this.radioButton3.UseVisualStyleBackColor = true;
+			// 
+			// helpbutton
+			// 
+			this.helpbutton.Location = new System.Drawing.Point(862, 437);
+			this.helpbutton.Name = "helpbutton";
+			this.helpbutton.Size = new System.Drawing.Size(75, 38);
+			this.helpbutton.TabIndex = 20;
+			this.helpbutton.Text = "What are these?";
+			this.helpbutton.UseVisualStyleBackColor = true;
+			this.helpbutton.Click += new System.EventHandler(this.helpbutton_Click);
 			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(949, 487);
+			this.Controls.Add(this.helpbutton);
 			this.Controls.Add(this.radioButton3);
 			this.Controls.Add(this.radioButton2);
 			this.Controls.Add(this.radioButton1);
@@ -299,6 +310,7 @@
 		private System.Windows.Forms.RadioButton radioButton1;
 		private System.Windows.Forms.RadioButton radioButton2;
 		private System.Windows.Forms.RadioButton radioButton3;
+		private System.Windows.Forms.Button helpbutton;
 	}
 }
 
