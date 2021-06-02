@@ -22,7 +22,8 @@ namespace BindsManager
                 using (StreamReader reader = new StreamReader(file))
                 {
                     richTextBox1.Text = reader.ReadToEnd().Replace(Environment.NewLine, "\n");
-                    MessageBox.Show("This preset has been succesfully loaded!!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("This preset has been succesfully loaded!!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //line above was for testing
                 }
             }
         }
