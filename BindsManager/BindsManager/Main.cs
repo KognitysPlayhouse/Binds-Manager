@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Windows.Forms;
 using static BindsManager.Classes.InputBox;
 
@@ -13,22 +14,26 @@ namespace BindsManager
 		public string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory", "cmdbinding.txt");
         public string import_folder_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BindsManager");
 
-        public Main(string file)
+        public Main(string file = "this is a default value")
 		{
 			InitializeComponent();
-            using (StreamReader reader = new StreamReader(file))
+            if (file != "this is a default value")
             {
-                richTextBox1.Text = reader.ReadToEnd().Replace(Environment.NewLine, "\n");
-                MessageBox.Show("This preset has been succesfully loaded!!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } 
+                using (StreamReader reader = new StreamReader(file))
+                {
+                    richTextBox1.Text = reader.ReadToEnd().Replace(Environment.NewLine, "\n");
+                    MessageBox.Show("This preset has been succesfully loaded!!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
 		private void Main_Load(object sender, EventArgs e)
 		{
-            if (!File.Exists(Path.Combine(Classes.FileManagerUtils.StartMenu, "BindsManager")))
+            if (!File.Exists(Path.Combine(Classes.FileManagerUtils.StartMenu, "BindsManager.lnk")))
             {
                 Classes.FileManagerUtils.AddToStartmenu();
             }
+
 			ToolTip keyToolTip = new ToolTip();
 			keyToolTip.ShowAlways = true;
 			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to.");
