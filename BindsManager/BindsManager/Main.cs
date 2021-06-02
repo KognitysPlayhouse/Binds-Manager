@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -30,12 +31,25 @@ namespace BindsManager
 
 		private void Main_Load(object sender, EventArgs e)
 		{
+
             if (!File.Exists(Path.Combine(Classes.FileManagerUtils.StartMenu, "BindsManager.lnk")))
             {
                 Classes.FileManagerUtils.AddToStartmenu();
+
+                var kogkey = Registry.ClassesRoot.OpenSubKey(".kog");
+                var kogtype = kogkey.GetValue("");
+
+                var exec = Application.ExecutablePath;
+                var command = "\"" + exec + "\"" + " \"%1\"";
+
+                string keyName = kogtype + @"\shell\Open\command";
+                using (var newKogKey = Registry.ClassesRoot.CreateSubKey(keyName))
+                {
+                    newKogKey.SetValue("", command);
+                }
             }
 
-			ToolTip keyToolTip = new ToolTip();
+            ToolTip keyToolTip = new ToolTip();
 			keyToolTip.ShowAlways = true;
 			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to.");
 

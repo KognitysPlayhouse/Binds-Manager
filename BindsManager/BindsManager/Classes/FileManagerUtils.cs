@@ -12,7 +12,6 @@ namespace BindsManager.Classes
 
         public static void AddToStartmenu()
         {
-
             string shortcutLocation = Path.Combine(StartMenu, "BindsManager.lnk");
 
             WshShell shell = new WshShell();
