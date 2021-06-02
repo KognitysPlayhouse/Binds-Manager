@@ -91,7 +91,7 @@ namespace BindsManager
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.InitialDirectory = import_folder_path;
-                dialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                dialog.Filter = "Bind preset files (*.kog)|*.kog|All files (*.*)|*.*";
                 dialog.FilterIndex = 2;
                 dialog.RestoreDirectory = true;
 
@@ -102,7 +102,7 @@ namespace BindsManager
 
                     using (StreamReader reader = new StreamReader(path))
                     {
-                        richTextBox1.Text = reader.ReadToEnd();
+                        richTextBox1.Text = reader.ReadToEnd().Replace(Environment.NewLine, "\n");
                         MessageBox.Show("Remember to press the Save button!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -146,13 +146,14 @@ namespace BindsManager
                 return;
             }
 
-            var path = Path.Combine(import_folder_path, $"{result}.txt");
+            var path = Path.Combine(import_folder_path, $"{result}.kog");
 
             var file = File.Create(path);
 
             using (StreamWriter writer = new StreamWriter(file))
             {
-                writer.Write(richTextBox1.Text);
+                var newText = richTextBox1.Text;
+                writer.Write(newText.Replace("\n", Environment.NewLine));
                 MessageBox.Show($"The preset was successfully saved under name '{result}'!", "Saved preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
         }
