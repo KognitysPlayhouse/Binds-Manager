@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Windows.Forms;
 using BindsManager.Classes;
-using static BindsManager.Classes.InputBox;
+using static BindsManager.Classes.UIHelper;
 
 namespace BindsManager
 {
