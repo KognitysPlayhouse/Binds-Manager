@@ -30,13 +30,6 @@ namespace BindsManager
 
 		private void Main_Load(object sender, EventArgs e)
 		{
-
-            if (!File.Exists(Path.Combine(FileManagerUtils.StartMenu, "BindsManager.lnk")))
-            {
-                FileManagerUtils.AddShortcut(FileManagerUtils.Desktop);
-                FileManagerUtils.AddShortcut(FileManagerUtils.StartMenu);
-            }
-
             ToolTip keyToolTip = new ToolTip();
 			keyToolTip.ShowAlways = true;
 			keyToolTip.SetToolTip(comboBox1, "Select a Key to bind the command to.");
@@ -66,6 +59,12 @@ namespace BindsManager
                     //MessageBox.Show("This preset has been succesfully loaded!!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //line above was for testing
                 }
+            }
+
+            if (!File.Exists(Path.Combine(FileManagerUtils.StartMenu, "BindsManager.lnk")))
+            {
+                FileManagerUtils.AddShortcut(FileManagerUtils.Desktop);
+                FileManagerUtils.AddShortcut(FileManagerUtils.StartMenu);
             }
         }
 

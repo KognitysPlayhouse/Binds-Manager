@@ -11,7 +11,7 @@ namespace BindsManager.Classes
     public class FileManagerUtils
     {
         public static string StartMenu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs");
-        public static string Desktop = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu);
+        public static string Desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public static void AddShortcut(string path)
         {
