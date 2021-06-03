@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.Windows.Forms;
+using BindsManager.Classes;
 using static BindsManager.Classes.InputBox;
 
 namespace BindsManager
@@ -15,38 +16,25 @@ namespace BindsManager
 		public string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SCP Secret Laboratory", "cmdbinding.txt");
         public string import_folder_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BindsManager");
 
+        public string loaderText = "";
+
+
         public Main(string file = "this is a default value")
 		{
 			InitializeComponent();
             if (file != "this is a default value")
             {
-                using (StreamReader reader = new StreamReader(file))
-                {
-                    richTextBox1.Text = reader.ReadToEnd().Replace(Environment.NewLine, "\n");
-                    //MessageBox.Show("This preset has been succesfully loaded!!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //line above was for testing
-                }
+                loaderText = file;
             }
         }
 
 		private void Main_Load(object sender, EventArgs e)
 		{
 
-            if (!File.Exists(Path.Combine(Classes.FileManagerUtils.StartMenu, "BindsManager.lnk")))
+            if (!File.Exists(Path.Combine(FileManagerUtils.StartMenu, "BindsManager.lnk")))
             {
-                Classes.FileManagerUtils.AddToStartmenu();
-
-                var kogkey = Registry.ClassesRoot.OpenSubKey(".kog");
-                var kogtype = kogkey.GetValue("");
-
-                var exec = Application.ExecutablePath;
-                var command = "\"" + exec + "\"" + " \"%1\"";
-
-                string keyName = kogtype + @"\shell\Open\command";
-                using (var newKogKey = Registry.ClassesRoot.CreateSubKey(keyName))
-                {
-                    newKogKey.SetValue("", command);
-                }
+                FileManagerUtils.AddShortcut(FileManagerUtils.Desktop);
+                FileManagerUtils.AddShortcut(FileManagerUtils.StartMenu);
             }
 
             ToolTip keyToolTip = new ToolTip();
@@ -68,7 +56,18 @@ namespace BindsManager
 			}
 
             Directory.CreateDirectory(import_folder_path); // Create (internally ignores if already exists.)
-		}
+
+            if (loaderText != "")
+            {
+                using (StreamReader reader = new StreamReader(loaderText))
+                {
+                    var text = reader.ReadToEnd();
+                    richTextBox1.Text = text;
+                    //MessageBox.Show("This preset has been succesfully loaded!!", "Opened preset!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //line above was for testing
+                }
+            }
+        }
 
 		private void clearButton_Click(object sender, EventArgs e)
 		{
