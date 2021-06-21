@@ -12,6 +12,7 @@ namespace BindsManager.Classes
     {
         public static string StartMenu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs");
         public static string Desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public static string ResourcePath = "BindsManager.Main.Resources";
 
         public static void AddShortcut(string path)
         {
@@ -24,5 +25,25 @@ namespace BindsManager.Classes
             shortcut.TargetPath = Application.ExecutablePath;
             shortcut.Save();
         }
+
+        public static bool IsFileExtensionExists(string extension)
+        {
+            return Registry.CurrentUser.OpenSubKey("Software\\Classes\\.kog", false) == null;
+        }
+
+        public static void SetDefaultFileExtension(string extension)
+        {
+            RegistryKey extensionKey = Registry.CurrentUser.CreateSubKey("Software\\Classes\\.kog");
+            RegistryKey appKey = Registry.CurrentUser.CreateSubKey("Software\\Classes\\Applications\\BindsManager.exe");
+            RegistryKey associateKey = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.kog");
+
+
+
+            extensionKey.CreateSubKey($"{ResourcePath}.icong.ico"); //brb
+
+
+        }
     }
+
+
 }

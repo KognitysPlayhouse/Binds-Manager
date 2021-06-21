@@ -211,5 +211,16 @@ namespace BindsManager
 		{
 			MessageBox.Show("There are 3 major types of commands in SCP:SL\n\nFirstly are Remote Admin Commands. They are used either in the text based RA or typed in the game console with a / prefix (\"/tut Kognity\" as an example).\n\nSecondly are Client Commands. They are typed exlusively in the game console and are prefixed with a . (\".ability1\" as an example)\n\nLastly are Game Console Commands. They are locally run commands and are not sent to the server and have no prefix (\"ar\", \"rc\", \"connect SOMEIPADDRESS\" are some notable examples)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            string text = "";
+            foreach (string i in System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames())
+            {
+                text += $" -- {i}";
+            }
+            MessageBox.Show(text, "caption", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+    }
 }

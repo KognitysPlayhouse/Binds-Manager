@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BindsManager.Classes
 {
-    public static class UIHelper # Switched to 'UIHelper' for future use with better UI
+    public static class UIHelper // Switched to 'UIHelper' for future use with better UI
     {
         public static string AskInput(string title, string description) {
             Form inputBox = new Form()

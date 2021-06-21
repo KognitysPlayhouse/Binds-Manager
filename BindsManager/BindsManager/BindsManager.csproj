@@ -92,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\FileManagerUtils.cs" />
-    <Compile Include="Classes\InputBox.cs" />
+    <Compile Include="Classes\UIHelper.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
