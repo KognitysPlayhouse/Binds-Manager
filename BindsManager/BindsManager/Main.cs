@@ -212,7 +212,33 @@ namespace BindsManager
 			MessageBox.Show("There are 3 major types of commands in SCP:SL\n\nFirstly are Remote Admin Commands. They are used either in the text based RA or typed in the game console with a / prefix (\"/tut Kognity\" as an example).\n\nSecondly are Client Commands. They are typed exlusively in the game console and are prefixed with a . (\".ability1\" as an example)\n\nLastly are Game Console Commands. They are locally run commands and are not sent to the server and have no prefix (\"ar\", \"rc\", \"connect SOMEIPADDRESS\" are some notable examples)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            return;
+        }
+
         private void button1_Click(object sender, EventArgs e)
+        {
+            switch (comboBox2.Text)
+            {
+                default:
+                    MessageBox.Show("You didn't select a valid server name!", "Uh oh!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case "Kognity's Playhouse":
+                    richTextBox1.AppendText("49:.ability1\n50:.ability2\n51:.ability3\n52:.ability4\n102:.zfe");
+                    break;
+                case "Skull Island":
+                    richTextBox1.AppendText("49:.ability1\n50:.ability2\n106:.afk\n107:.079");
+                    break;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /*private void button1_Click(object sender, EventArgs e)
         {
             System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
             string text = "";
@@ -221,6 +247,8 @@ namespace BindsManager
                 text += $" -- {i}";
             }
             MessageBox.Show(text, "caption", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        }
+
+        }*/
+
     }
 }
