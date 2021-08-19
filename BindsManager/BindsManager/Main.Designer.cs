@@ -49,8 +49,10 @@
             this.helpbutton = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // saveButton
@@ -139,9 +141,10 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::BindsManager.Properties.Resources.icong;
-            this.pictureBox2.Location = new System.Drawing.Point(219, 357);
+            this.pictureBox2.Location = new System.Drawing.Point(163, 361);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(49, 48);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,15 +154,14 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Image = global::BindsManager.Properties.Resources.joinDiscord;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 358);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 367);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(182, 47);
+            this.pictureBox1.Size = new System.Drawing.Size(146, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // richTextBox2
             // 
@@ -271,11 +273,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Image = global::BindsManager.Properties.Resources.icontgw;
+            this.pictureBox3.Location = new System.Drawing.Point(218, 361);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(49, 48);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 23;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 487);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.helpbutton);
@@ -298,10 +314,11 @@
             this.Controls.Add(this.saveButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Bind Manager";
+            this.Text = "Binds Manager";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,5 +345,6 @@
 		private System.Windows.Forms.Button helpbutton;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

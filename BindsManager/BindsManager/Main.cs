@@ -66,14 +66,15 @@ namespace BindsManager
                 FileManagerUtils.AddShortcut(FileManagerUtils.Desktop);
                 FileManagerUtils.AddShortcut(FileManagerUtils.StartMenu);
             }
+            UIHelper.SendTextBox("Credits for Binds Manager", "This software was initially made by Kognity, but this is a modification of it which is still maintained and is receiving updates. Enjoy!");
         }
 
-		private void clearButton_Click(object sender, EventArgs e)
+        private void clearButton_Click(object sender, EventArgs e)
 		{
 			richTextBox1.Text = "";
-		}
+        }
 
-		private void autoFillButton_Click(object sender, EventArgs e)
+        private void autoFillButton_Click(object sender, EventArgs e)
 		{
 			richTextBox1.Text += "49:.ability1\n50:.ability2\n51:.ability3\n52:.ability4\n102:.zfe\n";
 		}
@@ -94,14 +95,14 @@ namespace BindsManager
 			}
 		}
 
-		private void pictureBox1_Click(object sender, EventArgs e)
+		private void pictureBox2_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start("https://discord.gg/kognity");
 		}
 
-		private void pictureBox2_Click(object sender, EventArgs e)
+		private void pictureBox3_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start("https://discord.gg/kognity");
+			System.Diagnostics.Process.Start("https://discord.gg/tgw");
 		}
 
 		private void saveButton_Click(object sender, EventArgs e)
@@ -237,6 +238,7 @@ namespace BindsManager
         {
 
         }
+
 
         /*private void button1_Click(object sender, EventArgs e)
         {
