@@ -124,6 +124,9 @@
   <data name="icong" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icong.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icontgw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icontgw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="joinDiscord" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\joinDiscord.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

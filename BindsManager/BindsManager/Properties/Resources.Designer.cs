@@ -83,6 +83,16 @@ namespace BindsManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icontgw {
+            get {
+                object obj = ResourceManager.GetObject("icontgw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap joinDiscord {
             get {
                 object obj = ResourceManager.GetObject("joinDiscord", resourceCulture);
